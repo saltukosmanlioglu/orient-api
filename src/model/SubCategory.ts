@@ -1,6 +1,7 @@
 import { sequelize, DataTypes, Model } from "@ooic/core";
 import { Category } from "./Category";
 import { Product } from "./Product";
+import { SubCategoryLocale } from "./SubCategoryLocale";
 
 export class SubCategory extends Model {
   id: number;
@@ -36,5 +37,10 @@ SubCategory.init(
 
 SubCategory.hasMany(Product, {
   as: "products",
+  foreignKey: "subCategoryId"
+})
+
+SubCategory.hasMany(SubCategoryLocale, {
+  as: "locales",
   foreignKey: "subCategoryId"
 })
