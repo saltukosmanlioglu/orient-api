@@ -1,10 +1,12 @@
 import { sequelize, DataTypes, Model } from "@ooic/core";
+import { CategoryLocale } from "./CategoryLocale";
 import { Product } from "./Product";
 import { SubCategory } from "./SubCategory";
 
 export class Category extends Model {
   id: number;
   color: string;
+  locales: Array<CategoryLocale>
   order: number;
   title: string;
   /* type definitions */
@@ -47,4 +49,9 @@ Category.hasMany(SubCategory, {
 Category.hasMany(Product, {
   as: "products",
   foreignKey: "categoryId"
+})
+
+Category.hasMany(CategoryLocale, {
+  as: 'locales',
+  foreignKey: 'categoryId'
 })
