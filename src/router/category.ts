@@ -8,7 +8,7 @@ const router = Router();
 router.post("/", auth.verifyToken, category.create);
 router.put("/:id", auth.verifyToken, category.update);
 router.get("/", category.get);
-router.get("/:id", auth.verifyToken, category.getById);
+router.get("/:id", category.getById);
 router.delete("/:id", auth.verifyToken, category.destroy);
 
 export default router;

@@ -1,21 +1,17 @@
-import { Category } from "@/model/Category";
-import { Todo } from "@/model/Todo";
+import { Product } from "@/model/Product";
 import { RequestHandler } from "@ooic/core";
 import { schema } from ".";
 
 const destroy: RequestHandler = async (request, response, next) => {
   try {
     const { id } = schema.params.parse(request.params);
+    const product = await Product.findOne({ where: { id: Number(id) } });
 
-    const todo = await Todo.findOne({ where: { id: Number(id) } });
-
-    if (todo.userId !== request.authUser.id) throw { statusCode: 403, message: "Unauthorized" };
-
-    todo.destroy();
+    product.destroy();
     response.status(200).send("Deleted");
   } catch (error) {
     next(error);
   }
 };
 
-export default destroy;
+export default destroy
