@@ -1,8 +1,11 @@
 import { sequelize, DataTypes, Model } from "@ooic/core";
+import { Product } from "./Product";
+import { SubCategory } from "./SubCategory";
 
 export class Category extends Model {
   id: number;
   color: string;
+  order: number;
   title: string;
   /* type definitions */
 }
@@ -19,6 +22,11 @@ Category.init(
       type: DataTypes.STRING(255),
       allowNull: false,
     },
+    order: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+      allowNull: false,
+    },
     title: {
       type: DataTypes.STRING(255),
       allowNull: false,
@@ -30,3 +38,13 @@ Category.init(
     sequelize,
   }
 );
+
+Category.hasMany(SubCategory, {
+  as: "subCategories",
+  foreignKey: "categoryId"
+})
+
+Category.hasMany(Product, {
+  as: "products",
+  foreignKey: "categoryId"
+})

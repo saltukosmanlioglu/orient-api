@@ -3,10 +3,12 @@ import { sequelize, DataTypes, Model } from "@ooic/core";
 export class Product extends Model {
   id: number;
   allergens: string;
+  categoryId: number;
   description: string;
   image: string;
-  name: string;
+  title: string;
   price: number;
+  subCategoryId: number;
   /* type definitions */
 }
 
@@ -30,7 +32,7 @@ Product.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    name: {
+    title: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },

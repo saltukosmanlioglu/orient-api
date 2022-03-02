@@ -1,5 +1,6 @@
 import { sequelize, DataTypes, Model } from "@ooic/core";
 import { Category } from "./Category";
+import { Product } from "./Product";
 
 export class SubCategory extends Model {
   id: number;
@@ -33,6 +34,7 @@ SubCategory.init(
   }
 );
 
-SubCategory.belongsTo(Category, {
-    foreignKey: "categoryId"
+SubCategory.hasMany(Product, {
+  as: "products",
+  foreignKey: "subCategoryId"
 })
