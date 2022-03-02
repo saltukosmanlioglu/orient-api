@@ -1,13 +1,15 @@
 import { sequelize, DataTypes, Model } from "@ooic/core";
+import { Category } from "./Category";
 
-export class Category extends Model {
+export class SubCategory extends Model {
   id: number;
+  categoryId: number;
   color: string;
   title: string;
   /* type definitions */
 }
 
-Category.init(
+SubCategory.init(
   {
     id: {
       autoIncrement: true,
@@ -20,13 +22,17 @@ Category.init(
       allowNull: false,
     },
     title: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
+        type: DataTypes.STRING(255),
+        allowNull: false,
+    }
     /* field initialization */
   },
   {
-    tableName: "category",
+    tableName: "subcategory",
     sequelize,
   }
 );
+
+SubCategory.belongsTo(Category, {
+    foreignKey: "categoryId"
+})

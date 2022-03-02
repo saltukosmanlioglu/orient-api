@@ -1,13 +1,14 @@
 import { sequelize, DataTypes, Model } from "@ooic/core";
+import { Product } from "./Product";
 
-export class Category extends Model {
+export class Slider extends Model {
   id: number;
-  color: string;
-  title: string;
+  productId: number;
+  image: string;
   /* type definitions */
 }
 
-Category.init(
+Slider.init(
   {
     id: {
       autoIncrement: true,
@@ -15,18 +16,18 @@ Category.init(
       allowNull: false,
       primaryKey: true,
     },
-    color: {
-      type: DataTypes.STRING(255),
+    image: {
+      type: DataTypes.TEXT,
       allowNull: false,
-    },
-    title: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
+    }
     /* field initialization */
   },
   {
-    tableName: "category",
+    tableName: "slider",
     sequelize,
   }
 );
+
+Slider.belongsTo(Product, {
+  foreignKey: "productId"
+})
