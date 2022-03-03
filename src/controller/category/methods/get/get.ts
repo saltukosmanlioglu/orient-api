@@ -13,6 +13,15 @@ const get: RequestHandler = async (request, response, next) => {
           include: [
             {
               association: "products",
+              include: [
+                {
+                  association: "locales",
+                  where: {
+                    locale: language || "TR",
+                  },
+                  required: false,
+                },
+              ],
             },
             {
               association: "locales",
@@ -25,6 +34,15 @@ const get: RequestHandler = async (request, response, next) => {
         },
         {
           association: "products",
+          include: [
+            {
+              association: "locales",
+              where: {
+                locale: language || "TR",
+              },
+              required: false,
+            },
+          ],
         },
         {
           association: "locales",
@@ -41,6 +59,14 @@ const get: RequestHandler = async (request, response, next) => {
         subCategories: category.toJSON().subCategories.map((subCategory) => ({
           ...subCategory,
           ...subCategory?.locales?.[0],
+          products: subCategory.products.map((product) => ({
+            ...product,
+            ...product?.locales?.[0],
+          })),
+        })),
+        products: category.toJSON().products.map((product) => ({
+          ...product,
+          ...product?.locales?.[0],
         })),
       }));
 

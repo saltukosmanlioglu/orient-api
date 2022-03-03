@@ -1,20 +1,17 @@
+import { Language } from "@/enum";
 import { sequelize, DataTypes, Model } from "@ooic/core";
-import { ProductLocale } from "./ProductLocale";
 
-export class Product extends Model {
+export class ProductLocale extends Model {
   id: number;
   allergens: string;
-  categoryId: number;
   description: string;
-  image: string;
-  locales: Array<ProductLocale>
+  productId: number;
+  locale: Language;
   title: string;
-  price: number;
-  subCategoryId: number;
   /* type definitions */
 }
 
-Product.init(
+ProductLocale.init(
   {
     id: {
       autoIncrement: true,
@@ -30,27 +27,18 @@ Product.init(
       type: DataTypes.TEXT,
       allowNull: true,
     },
-    image: {
-      type: DataTypes.TEXT,
+    locale: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
     title: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    price: {
-      type: DataTypes.DOUBLE,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     /* field initialization */
   },
   {
-    tableName: "product",
+    tableName: "productLocale",
     sequelize,
   }
 );
-
-Product.hasMany(ProductLocale, {
-  as: "locales",
-  foreignKey: "productId",
-});
