@@ -1,4 +1,6 @@
 import { RequestHandler } from "@ooic/core";
+import path from "path";
+import uid2 from "uid2";
 
 const upload: RequestHandler = async (request, response, next) => {
   try {
@@ -7,7 +9,7 @@ const upload: RequestHandler = async (request, response, next) => {
       return;
     }
 
-    const uploadPath = __dirname + "/../uploads/" + request.files.uploadFile.name;
+    const uploadPath = __dirname + "/../uploads/" + uid2(10) + request.files.uploadFile.name;
 
     request.files.uploadFile.mv(uploadPath, (err) => {
       if (err) {
@@ -15,7 +17,9 @@ const upload: RequestHandler = async (request, response, next) => {
         throw { statusCode: 500, message: "Dosya yüklenirken bir hata oluştu." };
       }
 
-      response.status(200).send({ uploadPath });
+      const subPath = path.normalize(uploadPath.split(__dirname)[1]).split('uploads/')[1];
+
+      response.status(200).send({ uploadedFilePath: subPath });
     });
   } catch (error) {
     next(error);
