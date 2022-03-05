@@ -5,7 +5,6 @@ const loadRouteFolder = (Routers,app,folderName) => {
   const files = fs.readdirSync(`src/router${folderName}/`, { withFileTypes: true });
   files.forEach(async (file)=>{
     if (file.isFile()){
-      console.log("try to import ",`@/router${folderName}/${file.name}`)
       const  loadedModule = await import(`@/router${folderName}/${file.name}`)
       const name = toKebabCase(file.name.split(".")[0]);
       Routers[name] = loadedModule.default;

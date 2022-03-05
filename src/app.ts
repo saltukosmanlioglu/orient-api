@@ -1,5 +1,5 @@
 import fs from "fs";
-import { OoicConfig, ooic } from "@ooic/core";
+import { OoicConfig, ooic, express } from "@ooic/core";
 
 const config: OoicConfig = {
   cors: {

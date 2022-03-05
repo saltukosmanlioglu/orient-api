@@ -1,8 +1,9 @@
-import { Router } from "@ooic/core";
-const router = Router();
-
+import { express, Router } from "@ooic/core";
 import * as file from "@/controller/file";
 
-router.post("/upload", file.upload);
+const router = Router();
+
+router.use('/serve', express.static('uploads'))
+router.post('/upload', file.upload);
 
 export default router;
