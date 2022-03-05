@@ -19,7 +19,7 @@ const trimEndStr = (source: string, str: string) => {
     return source.slice(0, start);
   }
 };
-const routes = [];
+export const routes = [];
 const recursivePath = (r, pathPrev = "") => {
   const path = getFullPath(r, pathPrev);
   console.log(r)

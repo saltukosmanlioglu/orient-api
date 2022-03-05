@@ -4,6 +4,7 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import morgan from "morgan";
+import fileUpload from "express-fileupload";
 import { OoicConfig } from "./types";
 import { initRouter } from "./init-router";
 import { initErrorHandlers } from "./init-error-handlers";
@@ -11,13 +12,19 @@ import { connect, sync } from "./init-connection";
 import { queryParser } from "express-query-parser";
 import { swaggerify } from "./swagger-autogen";
 import unhandled from "./unhandled";
-import { NumberIfNumeric } from "./utils";
+
 export async function ooic(config: OoicConfig) {
   const app = express();
   config.cors?.enabled && app.use(cors(config.cors.options));
   config.morgan?.enabled && process.env.NODE_ENV === "development" && app.use(morgan(config.morgan.format, config.morgan.options));
   config.cookieParser?.enabled && app.use(cookieParser(config.cookieParser.secret, config.cookieParser.options));
   app.use(express.urlencoded({ extended: true }));
+  app.use(
+    fileUpload({
+      useTempFiles: true,
+      tempFileDir: "/tmp/",
+    })
+  );
   app.use(express.json());
   app.use(
     queryParser({
@@ -33,7 +40,7 @@ export async function ooic(config: OoicConfig) {
   await initErrorHandlers(app);
   app.use(unhandled);
 
-  // await swaggerify(app),
+  await swaggerify(app);
   await sync();
 
   if (process.env.NODE_ENV === "development") {

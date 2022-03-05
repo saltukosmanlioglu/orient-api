@@ -1,14 +1,9 @@
 import { Router } from "@ooic/core";
-
 import * as category from "@/controller/category";
-import * as auth from "@/controller/auth";
 
 const router = Router();
 
-router.post("/", auth.verifyToken, category.create);
-router.put("/:id", auth.verifyToken, category.update);
 router.get("/", category.get);
 router.get("/:id", category.getById);
-router.delete("/:id", auth.verifyToken, category.destroy);
 
 export default router;

@@ -8,7 +8,6 @@ const getById: RequestHandler = async (request, response, next) => {
     const { id } = schema.params.parse(request.params);
     const category = await Category.findOne({
       where: { id: Number(id) },
-      include: [SubCategory]
     });
     response.status(200).send(category);
   } catch (error) {

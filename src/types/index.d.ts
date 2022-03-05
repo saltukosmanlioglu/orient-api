@@ -4,6 +4,7 @@ declare global {
     interface Request {
       authUser: any;
       clientIp: string;
+      files: any
     }
   }
 }
