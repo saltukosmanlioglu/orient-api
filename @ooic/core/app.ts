@@ -19,6 +19,7 @@ export async function ooic(config: OoicConfig) {
   config.morgan?.enabled && process.env.NODE_ENV === "development" && app.use(morgan(config.morgan.format, config.morgan.options));
   config.cookieParser?.enabled && app.use(cookieParser(config.cookieParser.secret, config.cookieParser.options));
   app.use(express.urlencoded({ extended: true }));
+  app.use(express.static('public'))
   app.use(
     fileUpload({
       useTempFiles: true,
