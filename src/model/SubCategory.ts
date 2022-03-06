@@ -37,10 +37,11 @@ SubCategory.init(
 
 SubCategory.hasMany(Product, {
   as: "products",
-  foreignKey: "subCategoryId"
+  foreignKey: "subCategoryId",
+  constraints: false
 })
 
 SubCategory.hasMany(SubCategoryLocale, {
   as: "locales",
-  foreignKey: "subCategoryId"
+  foreignKey: "subCategoryId",
 })
