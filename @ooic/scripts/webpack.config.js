@@ -42,15 +42,6 @@ module.exports = (env) => ({
   ],
 
   module: {
-    rules: [
-      {
-        test: /\.[jt]sx?$/,
-        loader: "esbuild-loader",
-        options: {
-          loader: "ts",
-          target: "es2015",
-        },
-      },
-    ],
+    rules: [{ test: /\.tsx?$/, loader: "ts-loader" }],
   },
 });
