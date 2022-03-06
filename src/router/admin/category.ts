@@ -5,10 +5,10 @@ import * as auth from "@/controller/auth";
 
 const router = Router();
 
-router.post("/", category.create);
-router.put("/:id", category.update);
-router.get("/", category.get);
-router.get("/:id", category.getById);
-router.delete("/:id", category.destroy);
+router.post("/", auth.verifyToken, category.create);
+router.put("/:id", auth.verifyToken, category.update);
+router.get("/", auth.verifyToken, category.get);
+router.get("/:id", auth.verifyToken, category.getById);
+router.delete("/:id", auth.verifyToken, category.destroy);
 
 export default router;
