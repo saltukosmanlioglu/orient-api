@@ -52,7 +52,7 @@ export async function ooic(config: OoicConfig) {
         `\nhttp://localhost:${process.env.APP_PORT}`
     );
   } else {
-    http.createServer(app).listen(80);
+    http.createServer(app).listen(process.env.PORT);
     config.ssl?.enabled && https.createServer({ cert: config.ssl.cert, key: config.ssl.key }, app).listen(443);
     console.log(
       `\nWelcome to ${process.env.APP_NAME} v${process.env.APP_VERSION}! Listening on port 80 and 443` + `\nRunning on environment: ${process.env.NODE_ENV}`
