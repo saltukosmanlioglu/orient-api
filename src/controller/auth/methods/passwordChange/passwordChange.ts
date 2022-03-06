@@ -1,6 +1,6 @@
 import { User } from "@/model/User";
 import { RequestHandler } from "@ooic/core";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 import { schema } from ".";
 
