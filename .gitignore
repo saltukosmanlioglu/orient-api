@@ -110,4 +110,5 @@ dist
 #other 
 uploads/*
 !uploads/.gitkeep
-tmp
+tmp/*
+!tmp/.gitkeep
