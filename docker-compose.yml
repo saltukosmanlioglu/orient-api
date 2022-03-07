@@ -5,8 +5,8 @@ services:
     volumes:
       - "./.mysql-data/db:/var/lib/mysql"
     ports:
-      - "49901:80"
-      - "49902:443"
+      - "80:49901"
+      - "443:49902"
     environment:
       - MYSQL_ROOT_PASSWORD=orientdb
       - MYSQL_DATABASE=orient
