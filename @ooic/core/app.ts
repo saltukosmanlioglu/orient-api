@@ -12,6 +12,7 @@ import { connect, sync } from "./init-connection";
 import { queryParser } from "express-query-parser";
 import { swaggerify } from "./swagger-autogen";
 import unhandled from "./unhandled";
+import packageJson from "../../package.json"
 
 export async function ooic(config: OoicConfig) {
   const app = express();
@@ -45,17 +46,17 @@ export async function ooic(config: OoicConfig) {
   await sync();
 
   if (process.env.NODE_ENV === "development") {
-    http.createServer(app).listen(process.env.APP_PORT);
+    http.createServer(app).listen(process.env.PORT);
     console.log(
-      `\nWelcome to ${process.env.APP_NAME} v${process.env.APP_VERSION}! Listening on port ${process.env.APP_PORT}` +
+      `\nWelcome to ${packageJson.name} v${packageJson.version}! Listening on port ${process.env.PORT}` +
         `\nRunning on environment: ${process.env.NODE_ENV}` +
-        `\nhttp://localhost:${process.env.APP_PORT}`
+        `\nhttp://localhost:${process.env.PORT}`
     );
   } else {
     http.createServer(app).listen(process.env.PORT);
-    config.ssl?.enabled && https.createServer({ cert: config.ssl.cert, key: config.ssl.key }, app).listen(443);
+    config.ssl?.enabled && https.createServer({ cert: config.ssl.cert, key: config.ssl.key }, app).listen(process.env.SECURE_PORT);
     console.log(
-      `\nWelcome to ${process.env.APP_NAME} v${process.env.APP_VERSION}! Listening on port 80 and 443` + `\nRunning on environment: ${process.env.NODE_ENV}`
+      `\nWelcome to ${packageJson.name} v${packageJson.version}! Listening on port ${process.env.PORT} and ${process.env.SECURE_PORT}` + `\nRunning on environment: ${process.env.NODE_ENV}`
     );
   }
   return app;
