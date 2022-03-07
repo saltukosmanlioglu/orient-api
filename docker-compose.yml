@@ -4,9 +4,6 @@ services:
     image: "mysql:5.7.37-oracle"
     volumes:
       - "./.mysql-data/db:/var/lib/mysql"
-    ports:
-      - "49901:80"
-      - "49902:443"
     environment:
       - MYSQL_ROOT_PASSWORD=orientdb
       - MYSQL_DATABASE=orient
@@ -14,3 +11,6 @@ services:
     build: .
     volumes:
       - "./uploads:/var/lib/uploads"
+    ports:
+      - "49901:80"
+      - "49902:443"
