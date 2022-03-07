@@ -4,3 +4,7 @@ build
 build-debug
 .mysql-data
 npm-debug.log
+uploads/*
+!uploads/.gitkeep
+tmp/*
+!tmp/.gitkeep
