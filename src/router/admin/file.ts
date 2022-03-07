@@ -4,7 +4,7 @@ import * as auth from "@/controller/auth";
 
 const router = Router();
 
-router.use("/serve", auth.verifyToken, express.static("uploads"));
-router.post("/upload", auth.verifyToken, file.upload);
+router.use("/serve", express.static("uploads"));
+router.post("/upload", file.upload);
 
 export default router;

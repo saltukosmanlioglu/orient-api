@@ -4,10 +4,10 @@ const router = Router();
 import * as productLocale from "@/controller/product-locale";
 import * as auth from "@/controller/auth";
 
-router.post("/", auth.verifyToken ,productLocale.create);
-router.put("/:id", auth.verifyToken ,productLocale.update);
-router.get("/", auth.verifyToken ,productLocale.get);
-router.get("/:id", auth.verifyToken ,productLocale.getById);
-router.delete("/:id", auth.verifyToken ,productLocale.destroy);
+router.post("/", productLocale.create);
+router.put("/:id", productLocale.update);
+router.get("/", productLocale.get);
+router.get("/:id", productLocale.getById);
+router.delete("/:id", productLocale.destroy);
 
 export default router;
