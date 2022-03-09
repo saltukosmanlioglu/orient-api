@@ -7,7 +7,7 @@ const register: RequestHandler = async (request, response, next) => {
   try {
     const { username, password } = schema.body.parse(request.body);
 
-    if (await User.findOne({ where: { username } })) throw { statusCode: 401, message: "Username is in use" };
+    if (await User.findOne({ where: { username } })) throw { statusCode: 403, message: "Username is in use" };
 
     await User.create({
       username,
