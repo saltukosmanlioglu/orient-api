@@ -7,10 +7,10 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 COPY yarn* ./
 
-RUN npm install
+RUN yarn
 # If you are building your code for production
 # RUN npm ci --only=production
 # Bundle app source
 COPY . .
 EXPOSE 80 443
-CMD [ "npm", "run", "start:build" ]
+CMD [ "yarn", "start:build" ]
