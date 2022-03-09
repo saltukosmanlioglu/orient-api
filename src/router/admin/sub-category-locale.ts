@@ -4,10 +4,10 @@ const router = Router();
 import * as subCategoryLocale from "@/controller/sub-category-locale";
 import * as auth from "@/controller/auth";
 
-router.post("/", subCategoryLocale.create);
-router.put("/:id", subCategoryLocale.update);
-router.get("/", subCategoryLocale.get);
-router.get("/:id", subCategoryLocale.getById);
-router.delete("/:id", subCategoryLocale.destroy);
+router.post("/", auth.verifyToken, subCategoryLocale.create);
+router.put("/:id", auth.verifyToken, subCategoryLocale.update);
+router.get("/", auth.verifyToken, subCategoryLocale.get);
+router.get("/:id", auth.verifyToken, subCategoryLocale.getById);
+router.delete("/:id", auth.verifyToken, subCategoryLocale.destroy);
 
 export default router;
