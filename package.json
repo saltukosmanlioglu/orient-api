@@ -13,7 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "@ooic/core": "https://github.com/haandev/ooic-core#1.0.0-orient",
-    "@ooic/scripts": "https://github.com/haandev/ooic-scripts#1.0.0-orient",
+    "@ooic/scripts": "https://github.com/haandev/ooic-scripts#1.0.2-orient",
     "bcryptjs": "^2.4.3",
     "jsonwebtoken": "^8.5.1",
     "uid2": "^1.0.0"
