@@ -49,3 +49,8 @@ SubCategory.hasMany(SubCategoryLocale, {
   as: "locales",
   foreignKey: "subCategoryId",
 });
+
+Product.belongsTo(SubCategory, {
+  as: "subCategory",
+  foreignKey: "subCategoryId",
+});
