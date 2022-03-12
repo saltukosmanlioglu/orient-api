@@ -6,7 +6,7 @@ import { SubCategory } from "./SubCategory";
 export class Category extends Model {
   id: number;
   color: string;
-  locales: Array<CategoryLocale>
+  locales: Array<CategoryLocale>;
   order: number;
   title: string;
   /* type definitions */
@@ -43,16 +43,21 @@ Category.init(
 
 Category.hasMany(SubCategory, {
   as: "subCategories",
-  foreignKey: "categoryId"
-})
+  foreignKey: "categoryId",
+});
 
 Category.hasMany(Product, {
   as: "products",
   foreignKey: "categoryId",
   constraints: false,
-})
+});
 
 Category.hasMany(CategoryLocale, {
-  as: 'locales',
-  foreignKey: 'categoryId'
-})
+  as: "locales",
+  foreignKey: "categoryId",
+});
+
+SubCategory.belongsTo(Category, {
+  as: "category",
+  foreignKey: "categoryId",
+});

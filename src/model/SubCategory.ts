@@ -1,11 +1,11 @@
 import { sequelize, DataTypes, Model } from "@ooic/core";
+import { Category } from "./Category";
 import { Product } from "./Product";
 import { SubCategoryLocale } from "./SubCategoryLocale";
 
 export class SubCategory extends Model {
   id: number;
   categoryId: number;
-  categoryName: string;
   color: string;
   title: string;
   /* type definitions */
@@ -22,9 +22,6 @@ SubCategory.init(
     categoryId: {
       type: DataTypes.NUMBER,
       allowNull: false,
-    },
-    categoryName: {
-      type: DataTypes.STRING,
     },
     color: {
       type: DataTypes.STRING(255),
