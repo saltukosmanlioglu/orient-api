@@ -61,3 +61,8 @@ SubCategory.belongsTo(Category, {
   as: "category",
   foreignKey: "categoryId",
 });
+
+Product.belongsTo(Category, {
+  as: "category",
+  foreignKey: "categoryId",
+});
