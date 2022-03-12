@@ -9,9 +9,7 @@ const getById: RequestHandler = async (request, response, next) => {
 
     const product = await Product.findOne({
       where: { id: Number(id) },
-      attributes: { exclude: ["productId"] },
       include: [
-        { association: "product" },
         {
           association: "locales",
           where: {

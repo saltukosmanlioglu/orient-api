@@ -1,6 +1,6 @@
 import { sequelize, DataTypes, Model } from "@ooic/core";
-import { Product } from "./Product";
 import { CategoryLocale } from "./CategoryLocale";
+import { Product } from "./Product";
 import { SubCategory } from "./SubCategory";
 
 export class Category extends Model {

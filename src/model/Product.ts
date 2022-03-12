@@ -51,11 +51,6 @@ Product.init(
   }
 );
 
-Product.belongsTo(Category, {
-  as: "category",
-  foreignKey: "categoryId"
-}) 
-
 Product.hasMany(ProductLocale, {
   as: "locales",
   foreignKey: "productId",
