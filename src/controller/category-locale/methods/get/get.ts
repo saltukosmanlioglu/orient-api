@@ -1,4 +1,3 @@
-import { Category } from "@/model/Category";
 import { CategoryLocale } from "@/model/CategoryLocale";
 import { RequestHandler } from "@ooic/core";
 import { schema } from ".";

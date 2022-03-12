@@ -4,9 +4,10 @@ import { schema } from ".";
 
 const get: RequestHandler = async (request, response, next) => {
   try {
-    const { language } = schema.query.parse(request.query);
+    const { language, orderMode, orderBy } = schema.query.parse(request.query);
+
     const categories = await Category.findAll({
-      order: [["createdAt", "desc"]],
+      order: [[orderBy, orderMode]],
       include: [
         {
           association: "subCategories",

@@ -1,5 +1,4 @@
 import { Category } from "@/model/Category";
-import { SubCategory } from "@/model/SubCategory";
 import { RequestHandler } from "@ooic/core";
 import { schema } from ".";
 
