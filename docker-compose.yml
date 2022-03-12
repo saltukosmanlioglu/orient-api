@@ -7,6 +7,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=orientdb
       - MYSQL_DATABASE=orient
+    restart: "always"
   web:
     build: .
     volumes:
@@ -14,3 +15,4 @@ services:
     ports:
       - "49901:80"
       - "49902:443"
+    restart: "always"
