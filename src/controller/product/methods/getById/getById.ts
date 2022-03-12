@@ -8,9 +8,7 @@ const getById: RequestHandler = async (request, response, next) => {
     const { language } = schema.query.parse(request.query);
     const product = await Product.findOne({
       where: { id: Number(id) },
-      attributes: { exclude: ["categoryId"] },
       include: [
-        { association: "category" },
         {
           association: "locales",
           where: {
