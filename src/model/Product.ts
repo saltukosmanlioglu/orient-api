@@ -1,3 +1,4 @@
+import { Category } from "./Category";
 import { sequelize, DataTypes, Model } from "@ooic/core";
 import { ProductLocale } from "./ProductLocale";
 
@@ -49,6 +50,11 @@ Product.init(
     sequelize,
   }
 );
+
+Product.belongsTo(Category, {
+  as: "category",
+  foreignKey: "categoryId"
+}) 
 
 Product.hasMany(ProductLocale, {
   as: "locales",
