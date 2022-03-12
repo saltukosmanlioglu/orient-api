@@ -33,5 +33,6 @@ Slider.init(
 );
 
 Slider.belongsTo(Product, {
+  as: "product",
   foreignKey: "productId"
 })
