@@ -9,7 +9,7 @@ export class Product extends Model {
   image: string;
   locales: Array<ProductLocale>
   title: string;
-  price: number;
+  price: string;
   subCategoryId: number;
   /* type definitions */
 }
@@ -39,7 +39,7 @@ Product.init(
       allowNull: false,
     },
     price: {
-      type: DataTypes.DOUBLE,
+      type: DataTypes.STRING(10),
       allowNull: false,
     },
     /* field initialization */

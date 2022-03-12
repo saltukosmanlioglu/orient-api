@@ -5,7 +5,7 @@ export const body = zod.object({
   description: zod.string(),
   image: zod.string(),
   title: zod.string(),
-  price: zod.number(),
+  price: zod.string(),
   subCategoryId: zod.number().optional(),
 });
 
