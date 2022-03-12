@@ -5,12 +5,13 @@ import { schema } from ".";
 const get: RequestHandler = async (request, response, next) => {
   try {
     const productLocales = await ProductLocale.findAll({
-      where: { ...schema.query.parse(request.query) }
+      where: { ...schema.query.parse(request.query) },
+      order: [["createdAt", "desc"]],
     });
     response.status(200).send(productLocales);
   } catch (error) {
-    next(error)
+    next(error);
   }
 };
 
-export default get
+export default get;

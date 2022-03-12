@@ -3,11 +3,13 @@ import { RequestHandler } from "@ooic/core";
 
 const get: RequestHandler = async (request, response, next) => {
   try {
-    const categories = await Slider.findAll();
+    const categories = await Slider.findAll({
+      order: [["createdAt", "desc"]],
+    });
     response.status(200).send(categories);
   } catch (error) {
-    next(error)
+    next(error);
   }
 };
 
-export default get
+export default get;

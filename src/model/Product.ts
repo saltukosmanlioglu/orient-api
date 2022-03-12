@@ -32,7 +32,7 @@ Product.init(
     },
     image: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
     title: {
       type: DataTypes.STRING(255),

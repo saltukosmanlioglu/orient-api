@@ -6,7 +6,7 @@ const get: RequestHandler = async (request, response, next) => {
   try {
     const { language } = schema.query.parse(request.query);
     const categories = await Category.findAll({
-      order: [["order", "asc"]],
+      order: [["createdAt", "desc"]],
       include: [
         {
           association: "subCategories",

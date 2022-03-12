@@ -16,6 +16,10 @@ Slider.init(
       allowNull: false,
       primaryKey: true,
     },
+    productId: {
+      type: DataTypes.NUMBER,
+      allowNull: false,
+    },
     image: {
       type: DataTypes.TEXT,
       allowNull: false,

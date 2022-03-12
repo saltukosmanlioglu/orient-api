@@ -1,11 +1,11 @@
 import { sequelize, DataTypes, Model } from "@ooic/core";
-import { Category } from "./Category";
 import { Product } from "./Product";
 import { SubCategoryLocale } from "./SubCategoryLocale";
 
 export class SubCategory extends Model {
   id: number;
   categoryId: number;
+  categoryName: string;
   color: string;
   title: string;
   /* type definitions */
@@ -19,14 +19,21 @@ SubCategory.init(
       allowNull: false,
       primaryKey: true,
     },
+    categoryId: {
+      type: DataTypes.NUMBER,
+      allowNull: false,
+    },
+    categoryName: {
+      type: DataTypes.STRING,
+    },
     color: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
     title: {
-        type: DataTypes.STRING(255),
-        allowNull: false,
-    }
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
     /* field initialization */
   },
   {
@@ -38,10 +45,10 @@ SubCategory.init(
 SubCategory.hasMany(Product, {
   as: "products",
   foreignKey: "subCategoryId",
-  constraints: false
-})
+  constraints: false,
+});
 
 SubCategory.hasMany(SubCategoryLocale, {
   as: "locales",
   foreignKey: "subCategoryId",
-})
+});

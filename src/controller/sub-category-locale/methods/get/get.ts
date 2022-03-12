@@ -7,7 +7,8 @@ import { schema } from ".";
 const get: RequestHandler = async (request, response, next) => {
   try {
     const subCategoryLocales = await SubCategoryLocale.findAll({
-      where: { ...schema.query.parse(request.query) }
+      where: { ...schema.query.parse(request.query) },
+      order: [["createdAt", "desc"]],
     });
     response.status(200).send(subCategoryLocales);
   } catch (error) {
