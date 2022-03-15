@@ -33,7 +33,7 @@ SubCategory.init(
       allowNull: false,
     },
     order: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       defaultValue: 0,
       allowNull: true,
     },
