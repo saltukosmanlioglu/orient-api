@@ -8,6 +8,7 @@ export class SubCategory extends Model {
   categoryId: number;
   color: string;
   title: string;
+  order: number;
   /* type definitions */
 }
 
@@ -30,6 +31,10 @@ SubCategory.init(
     title: {
       type: DataTypes.STRING(255),
       allowNull: false,
+    },
+    order: {
+      type: DataTypes.NUMBER,
+      allowNull: true,
     },
     /* field initialization */
   },

@@ -12,6 +12,7 @@ export class Product extends Model {
   title: string;
   price: string;
   subCategoryId: number;
+  order: number;
   /* type definitions */
 }
 
@@ -42,6 +43,10 @@ Product.init(
     price: {
       type: DataTypes.STRING(10),
       allowNull: false,
+    },
+    order: {
+      type: DataTypes.NUMBER,
+      allowNull: true,
     },
     /* field initialization */
   },

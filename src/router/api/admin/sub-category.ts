@@ -10,5 +10,7 @@ router.put("/:id", auth.verifyToken, subCategory.update);
 router.get("/", auth.verifyToken, subCategory.get);
 router.get("/:id", auth.verifyToken, subCategory.getById);
 router.delete("/:id", auth.verifyToken, subCategory.destroy);
+router.post("/reorder", auth.verifyToken, subCategory.reorder);
+
 
 export default router;
