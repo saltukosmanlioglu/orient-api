@@ -34,6 +34,7 @@ SubCategory.init(
     },
     order: {
       type: DataTypes.NUMBER,
+      defaultValue: 0,
       allowNull: true,
     },
     /* field initialization */
