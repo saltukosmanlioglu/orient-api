@@ -21,7 +21,7 @@ SubCategory.init(
       primaryKey: true,
     },
     categoryId: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     color: {
