@@ -31,8 +31,3 @@ Slider.init(
     sequelize,
   }
 );
-
-Slider.belongsTo(Product, {
-  as: "product",
-  foreignKey: "productId"
-})

@@ -44,19 +44,3 @@ SubCategory.init(
     sequelize,
   }
 );
-
-SubCategory.hasMany(Product, {
-  as: "products",
-  foreignKey: "subCategoryId",
-  constraints: false,
-});
-
-SubCategory.hasMany(SubCategoryLocale, {
-  as: "locales",
-  foreignKey: "subCategoryId",
-});
-
-Product.belongsTo(SubCategory, {
-  as: "subCategory",
-  foreignKey: "subCategoryId",
-});

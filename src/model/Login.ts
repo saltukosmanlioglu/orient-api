@@ -42,5 +42,3 @@ Login.init(
     sequelize,
   }
 );
-
-Login.belongsTo(User, { foreignKey: "userId" });

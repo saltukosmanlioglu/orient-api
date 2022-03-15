@@ -56,8 +56,3 @@ Product.init(
     sequelize,
   }
 );
-
-Product.hasMany(ProductLocale, {
-  as: "locales",
-  foreignKey: "productId",
-});
