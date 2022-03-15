@@ -11,7 +11,7 @@ services:
   web:
     build: .
     volumes:
-      - "./uploads:/var/lib/uploads"
+      - "/root/orient/uploads:./uploads"
     ports:
       - "49901:80"
       - "49902:443"
