@@ -1,5 +1,4 @@
 import { sequelize, DataTypes, Model } from "@ooic/core";
-import { Product } from "./Product";
 
 export class Slider extends Model {
   id: number;
@@ -15,10 +14,6 @@ Slider.init(
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
       primaryKey: true,
-    },
-    productId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
     },
     image: {
       type: DataTypes.TEXT,

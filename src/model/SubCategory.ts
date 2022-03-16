@@ -1,7 +1,4 @@
 import { sequelize, DataTypes, Model } from "@ooic/core";
-import { Category } from "./Category";
-import { Product } from "./Product";
-import { SubCategoryLocale } from "./SubCategoryLocale";
 
 export class SubCategory extends Model {
   id: number;
@@ -19,10 +16,6 @@ SubCategory.init(
       type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
       primaryKey: true,
-    },
-    categoryId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
     },
     color: {
       type: DataTypes.STRING(255),
