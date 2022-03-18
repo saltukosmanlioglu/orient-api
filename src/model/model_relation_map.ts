@@ -57,6 +57,11 @@ Slider.belongsTo(Product, {
   foreignKey: "productId",
 });
 
+Product.belongsTo(Category, {
+  as: "category",
+  foreignKey: "categoryId",
+});
+
 Product.belongsTo(SubCategory, {
   as: "subCategory",
   foreignKey: "subCategoryId",

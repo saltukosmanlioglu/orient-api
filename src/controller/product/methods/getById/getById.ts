@@ -17,7 +17,9 @@ const getById: RequestHandler = async (request, response, next) => {
           },
           required: false,
         },
+        { association: "category" },
       ],
+      attributes: { exclude: ["categoryId"] },
     });
 
     if (language) {
