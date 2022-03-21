@@ -1,5 +1,6 @@
 import fs from "fs";
-import { OoicConfig, ooic, express } from "@ooic/core";
+import { OoicConfig, ooic } from "@ooic/core";
+import { LocalizerFactory } from "@ooic/core/utils";
 
 const config: OoicConfig = {
   cors: {
@@ -24,6 +25,9 @@ const config: OoicConfig = {
     enabled: true,
   },
 };
+
 (async () => {
   const app = await ooic(config);
 })();
+
+export const localizer = LocalizerFactory({ localesArrayKey: "locales", localeShortCodeKey: "locale" });

@@ -1,3 +1,4 @@
+import { localizer } from "@/app";
 import { Category } from "@/model/Category";
 import { RequestHandler } from "@ooic/core";
 import { schema } from ".";
@@ -54,24 +55,9 @@ const get: RequestHandler = async (request, response, next) => {
     });
 
     if (language) {
-      const localedCategories = categories.map((category) => ({
-        ...category.toJSON(),
-        ...category?.toJSON().locales?.[0],
-        subCategories: category.toJSON().subCategories.map((subCategory) => ({
-          ...subCategory,
-          ...subCategory?.locales?.[0],
-          products: subCategory.products.map((product) => ({
-            ...product,
-            ...product?.locales?.[0],
-          })),
-        })),
-        products: category.toJSON().products.map((product) => ({
-          ...product,
-          ...product?.locales?.[0],
-        })),
-      }));
+      const localed = categories.map((category) => localizer(category.toJSON()));
 
-      return response.status(200).send(localedCategories);
+      return response.status(200).send(localed);
     }
 
     response.status(200).send(categories);
