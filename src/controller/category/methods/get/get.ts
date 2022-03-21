@@ -1,4 +1,3 @@
-import { localizer } from "@/app";
 import { Category } from "@/model/Category";
 import { RequestHandler } from "@ooic/core";
 import { schema } from ".";
@@ -71,8 +70,6 @@ const get: RequestHandler = async (request, response, next) => {
           ...product?.locales?.[0],
         })),
       }));
-      const localed = categories.map((category) => localizer(category.toJSON()));
-
       return response.status(200).send(localedCategories);
     }
 
