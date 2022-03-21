@@ -1,6 +1,5 @@
 import fs from "fs";
-import { OoicConfig, ooic } from "@ooic/core";
-import { LocalizerFactory } from "@ooic/core/utils";
+import { LocalizerFactory, OoicConfig, ooic } from "@ooic/core";
 
 const config: OoicConfig = {
   cors: {
