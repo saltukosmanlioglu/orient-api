@@ -16,7 +16,6 @@ Category.hasMany(SubCategory, {
 Category.hasMany(Product, {
   as: "products",
   foreignKey: "categoryId",
-  constraints: false,
 });
 
 Category.hasMany(CategoryLocale, {
@@ -32,7 +31,6 @@ Product.hasMany(ProductLocale, {
 SubCategory.hasMany(Product, {
   as: "products",
   foreignKey: "subCategoryId",
-  constraints: false,
 });
 
 SubCategory.hasMany(SubCategoryLocale, {
