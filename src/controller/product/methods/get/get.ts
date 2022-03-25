@@ -8,10 +8,10 @@ const get: RequestHandler = async (request, response, next) => {
 
     const products = await Product.findAll({
       attributes: { exclude: ["categoryId", "subCategoryId"] },
-      // include: [
-      //   { association: "category", attributes: ["title", "id"] },
-      //   { association: "subCategory", attributes: ["title", "id"] },
-      // ],
+      include: [
+        { association: "category", attributes: ["title", "id"] },
+        { association: "subCategory", attributes: ["title", "id"] },
+      ],
       where: {
         ...(categoryId ? { categoryId } : {}),
         ...(subCategoryId ? { subCategoryId } : {}),
