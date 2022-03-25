@@ -13,8 +13,8 @@ const get: RequestHandler = async (request, response, next) => {
         { association: "subCategory", attributes: ["title", "id"] },
       ],
       where: {
-        ...(categoryId ? { categoryId } : {}),
-        ...(subCategoryId ? { subCategoryId } : {}),
+        categoryId: categoryId ? categoryId : {},
+        subCategoryId: subCategoryId ? subCategoryId : {},
       },
     });
     response.status(200).send(products);
