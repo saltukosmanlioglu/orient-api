@@ -43,11 +43,6 @@ SubCategory.belongsTo(Category, {
   foreignKey: "categoryId",
 });
 
-Product.belongsTo(Category, {
-  as: "category",
-  foreignKey: "categoryId",
-});
-
 Login.belongsTo(User, { foreignKey: "userId" });
 
 Slider.belongsTo(Product, {
