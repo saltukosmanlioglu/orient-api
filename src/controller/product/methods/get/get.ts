@@ -7,7 +7,6 @@ const get: RequestHandler = async (request, response, next) => {
     const { categoryId, subCategoryId } = schema.query.parse(request.query);
 
     const products = await Product.findAll({
-      attributes: { exclude: ["categoryId", "subCategoryId"] },
       include: [
         { association: "category", attributes: ["title", "id"] },
         { association: "subCategory", attributes: ["title", "id"] },
