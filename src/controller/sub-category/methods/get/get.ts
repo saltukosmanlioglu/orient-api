@@ -10,7 +10,7 @@ const get: RequestHandler = async (request, response, next) => {
       order: [["createdAt", "desc"]],
       attributes: { exclude: ["categoryId"] },
       include: [{ association: "category", attributes: ["title", "id"] }],
-      where: { categoryId },
+      where: { ...(categoryId ? { categoryId } : {}) },
     });
     response.status(200).send(categories);
   } catch (error) {
